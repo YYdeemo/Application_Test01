@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView text = (TextView) findViewById(R.id.text1);
-        //text.setText("hi boy!");
+        //text.setText("hi bou!");
 
         TextView text2 = (TextView) findViewById(R.id.text2);
         text2.setText("1");
