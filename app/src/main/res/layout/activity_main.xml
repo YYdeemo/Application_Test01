@@ -16,6 +16,7 @@
         app:srcCompat="@mipmap/img01" />
 
     <TextView
+        android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -34,19 +35,39 @@
 
     <Button
         android:id="@+id/button1"
+        android:onClick="subtract"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="240dp"
         android:layout_alignTop="@id/button2"
-        android:text="Button" />
+        android:layout_marginLeft="240dp"
+        android:text="subtract" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="420dp"
-        android:layout_marginLeft="54dp"
-        android:text="Button" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="48dp"
+        android:onClick="abc"
+        android:text="add" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/edit_test1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/text1"
+        android:layout_marginTop="388dp"
+        android:layout_alignStart="@id/text1"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@id/edit_test1"
+        android:layout_marginLeft="200dp"
+        android:text="TextView" />
 
 
 </RelativeLayout>
