@@ -1,6 +1,8 @@
 package com.example.apple.application_test01;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -52,6 +54,15 @@ public class SecondActivity extends AppCompatActivity {
         Log.i(TAG, "SaveRate: new euro rate = " + neweurorate);
         Log.i(TAG, "SaveRate: new won rate = " +newwonrate);
 
+        //SAVE THE RATE TO MYRATE.XML
+        SharedPreferences sharedPreferences = getSharedPreferences("myrate", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putFloat("dollar_rate",Float.parseFloat(newdollarrate.toString()));
+        editor.putFloat("euro_rate",Float.parseFloat(neweurorate.toString()));
+        editor.putFloat("won_rate",Float.parseFloat(newwonrate.toString()));
+        editor.commit();
+
+        Log.i(TAG, "SaveRate: save data in sharedperferences");
 
         Intent intent = getIntent();
 

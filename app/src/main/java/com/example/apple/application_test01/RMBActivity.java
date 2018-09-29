@@ -1,6 +1,8 @@
 package com.example.apple.application_test01;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,6 +38,20 @@ public class RMBActivity extends AppCompatActivity{
         euro = (Button) findViewById(R.id.euro);
         won = (Button) findViewById(R.id.won);
         result = (TextView) findViewById(R.id.result);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("myrate", Context.MODE_PRIVATE);
+        Float fd = sharedPreferences.getFloat("dollar_rate",0.0f);
+        Float fe = sharedPreferences.getFloat("euro_rate",0.0f);
+        Float fw = sharedPreferences.getFloat("won_rate",0.0f);
+
+        dollarrate = Double.parseDouble(fd.toString());
+        eurorate = Double.parseDouble(fe.toString());
+        wonrate = Double.parseDouble(fw.toString());
+
+        Log.i(TAG, "onCreate: sp dollar_rate = "+dollarrate);
+        Log.i(TAG, "onCreate: sp euro_rate = "+eurorate);
+        Log.i(TAG, "onCreate: sp won_rate = "+wonrate);
+
     }
 
     public void onclick(View but){
