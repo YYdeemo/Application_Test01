@@ -52,6 +52,8 @@ public class RMBActivity extends AppCompatActivity{
         Log.i(TAG, "onCreate: sp euro_rate = "+eurorate);
         Log.i(TAG, "onCreate: sp won_rate = "+wonrate);
 
+
+
     }
 
     public void onclick(View but){

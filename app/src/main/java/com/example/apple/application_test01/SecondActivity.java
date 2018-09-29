@@ -3,6 +3,7 @@ package com.example.apple.application_test01;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -63,6 +64,15 @@ public class SecondActivity extends AppCompatActivity {
         editor.commit();
 
         Log.i(TAG, "SaveRate: save data in sharedperferences");
+
+        SharedPreferences sharedPreferences1 = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+        editor1.putFloat("dollar_rate",Float.parseFloat(newdollarrate.toString()));
+        editor1.putFloat("euro_rate",Float.parseFloat(neweurorate.toString()));
+        editor1.putFloat("won_rate",Float.parseFloat(newwonrate.toString()));
+        editor1.commit();
+
+        Log.i(TAG, "SaveRate: save data in PreferenceManager");
 
         Intent intent = getIntent();
 
