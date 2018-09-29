@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/rmb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="please input how much RMB you need"
+        android:ems="10"
+        android:textSize="20dp"
+        android:layout_marginTop="16dp"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="the result"
+        android:textSize="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:textAlignment="center"/>
+
+
+    <Button
+
+        android:id="@+id/dollar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DOLLAR"
+        android:onClick="onclick"/>
+
+    <Button
+
+        android:id="@+id/euro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EURO"
+        android:onClick="onclick"/>
+
+    <Button
+
+        android:id="@+id/won"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WON"
+        android:onClick="getWon"/>
+
+    <Button
+        android:id="@+id/config"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="config"
+        android:onClick="openOne"
+        android:layout_marginTop="20dp"
+        />
+</LinearLayout>
+
+
+

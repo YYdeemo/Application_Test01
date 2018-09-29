@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DOLLAR"
+        android:textSize="20dp"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/dollar_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="please input Dollar rate"
+        android:ems="10"
+        android:textSize="20dp"
+        android:layout_marginTop="16dp"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EURO"
+        android:textSize="20dp"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/euro_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="please input Euro rate"
+        android:ems="10"
+        android:textSize="20dp"
+        android:layout_marginTop="16dp"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WON"
+        android:textSize="20dp"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/won_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="please input Won rate"
+        android:ems="10"
+        android:textSize="20dp"
+        android:layout_marginTop="16dp"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/save_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="save"
+        android:layout_marginTop="20dp"
+        android:onClick="SaveRate"/>
+
+</LinearLayout>
+
+

@@ -1,73 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        app:srcCompat="@mipmap/img01" />
+        android:layout_height="wrap_content"
+        android:text="@string/height"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hintheight"
+        android:ems="10"
+        android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/hello_text"
-        android:textSize="40sp" />
+        android:text="@string/weight"
+        android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/weight"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="72dp"
-        android:layout_marginLeft="16dp"
-        android:text="@string/start_text"
-        android:textSize="24sp"/>
+        android:hint="@string/hintweight"
+        android:ems="10"
+        android:inputType="numberDecimal" />
 
     <Button
-        android:id="@+id/button1"
-        android:onClick="subtract"
+
+        android:id="@+id/getbmi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/button2"
-        android:layout_marginLeft="240dp"
-        android:text="subtract" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="48dp"
-        android:onClick="abc"
-        android:text="add" />
-
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/edit_test1"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text1"
-        android:layout_marginTop="388dp"
-        android:layout_alignStart="@id/text1"
-        android:inputType="number"/>
+        android:text="GET MY BMI"/>
 
     <TextView
-        android:id="@+id/text2"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_alignTop="@id/edit_test1"
-        android:layout_marginLeft="200dp"
-        android:text="TextView" />
+        android:id="@+id/BMI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        />
 
-
-</RelativeLayout>
+</LinearLayout>
