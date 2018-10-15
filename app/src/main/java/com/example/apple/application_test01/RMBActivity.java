@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,10 @@ import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -50,10 +55,32 @@ public class RMBActivity extends AppCompatActivity implements Runnable{
 
     Handler handler;
 
+    String today;
+
+    Boolean isupdate = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rmb);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("myrate", Context.MODE_PRIVATE);
+
+        //获取当前时间
+        today = sharedPreferences.getString("ToDay",null);
+        Log.i(TAG, "onCreate: now today is "+today);
+        Log.i(TAG, "onCreate: now isupdate = "+isupdate);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        if(today==null) {
+            today = df.format(new Date());
+        }else if(today.contains(df.format(new Date()))){
+            isupdate = true;
+        }
+
+        Log.i(TAG, "onCreate: now today is "+today);
+        Log.i(TAG, "onCreate: now isupdate = "+isupdate);
+
+
 
         rmb = (EditText) findViewById(R.id.rmb);
         dollar = (Button) findViewById(R.id.dollar);
@@ -61,10 +88,11 @@ public class RMBActivity extends AppCompatActivity implements Runnable{
         won = (Button) findViewById(R.id.won);
         result = (TextView) findViewById(R.id.result);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("myrate", Context.MODE_PRIVATE);
+        //SharedPreferences sharedPreferences = getSharedPreferences("myrate", Context.MODE_PRIVATE);
         Float fd = sharedPreferences.getFloat("dollar_rate",0.0f);
         Float fe = sharedPreferences.getFloat("euro_rate",0.0f);
         Float fw = sharedPreferences.getFloat("won_rate",0.0f);
+
 
         dollarrate = Double.parseDouble(fd.toString());
         eurorate = Double.parseDouble(fe.toString());
@@ -75,7 +103,8 @@ public class RMBActivity extends AppCompatActivity implements Runnable{
         Log.i(TAG, "onCreate: sp won_rate = "+wonrate);
 
         Thread t = new Thread(this);
-        t.start();
+        if(isupdate==false)
+            t.start();
 
         handler = new Handler() {
             @Override
@@ -91,6 +120,33 @@ public class RMBActivity extends AppCompatActivity implements Runnable{
                 super.handleMessage(msg);
             }
         };
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 
     public void onclick(View but){
@@ -199,6 +255,13 @@ public class RMBActivity extends AppCompatActivity implements Runnable{
                 e.printStackTrace();
             }
         }
+
+        Log.i(TAG, "run: edit today "+today);
+        SharedPreferences sharedPreferences1 = getSharedPreferences("myrate", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+        editor1.putString("ToDay",today);
+        editor1.commit();
+
         String rates = null;
         //获得message对象用于返回主线程
         Message msg = handler.obtainMessage(5);
@@ -233,23 +296,23 @@ public class RMBActivity extends AppCompatActivity implements Runnable{
                 continue;
 
             Element a = row.selectFirst("a");
-            Log.i(TAG, "GetRateFromInternet: has a , a text is "+a.text());
+            //Log.i(TAG, "GetRateFromInternet: has a , a text is "+a.text());
             if(a.text().contains("美元")){
                 Elements A_rates = row.select("td");
                 String America_rate = A_rates.get(2).text();
-                Log.i(TAG, "GetRateFromInternet: get the America rate is :"+America_rate);
+                //Log.i(TAG, "GetRateFromInternet: get the America rate is :"+America_rate);
                 rates = America_rate+";";
             }
             if(a.text().contains("欧元")){
                 Elements E_rates = row.select("td");
                 String Euro_rate = E_rates.get(2).text();
-                Log.i(TAG, "GetRateFromInternet: get the Euro rate is :"+Euro_rate);
+                //Log.i(TAG, "GetRateFromInternet: get the Euro rate is :"+Euro_rate);
                 rates = rates+Euro_rate+";";
             }
             if(a.text().contains("韩国元")){
                 Elements W_rates = row.select("td");
                 String Won_rate = W_rates.get(2).text();
-                Log.i(TAG, "GetRateFromInternet: get the Won rate is :"+ Won_rate);
+                //Log.i(TAG, "GetRateFromInternet: get the Won rate is :"+ Won_rate);
                 rates = rates+Won_rate;
             }
         }
@@ -275,6 +338,5 @@ public class RMBActivity extends AppCompatActivity implements Runnable{
         }
         return out.toString();
     }
-
 
 }

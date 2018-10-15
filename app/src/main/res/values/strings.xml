@@ -8,6 +8,7 @@
     <string name="weight">Weight:</string>
     <string name="hintheight">Please input your height, and the unit is m</string>
     <string name="hintweight">Please input your weight, and the unit is kg</string>
+    <string name="title_activity_list">ListActivity</string>
 
 
 </resources>
